@@ -1,0 +1,11 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+<h2> Пользователь {{ new_user.username }} успешно зарегистрирован! </h2>
+
+<p>Имя - {{ new_user.first_name }}</p>
+<p>Фамилия - {{ new_user.last_name }}</p>
+<p>Email - {{ new_user.email }}</p>
+<p>Телефон - {{ new_user.phone }}</p>
+
+{% endblock content %}

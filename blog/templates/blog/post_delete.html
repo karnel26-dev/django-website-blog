@@ -1,0 +1,26 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+<h2>Удалить пост?</h2>
+<h3>Информация о посте № {{post.id}} </h3>
+<hr>
+<p>Автор - {{post.author}}</p>
+<p>Название - {{post.title}}</p>
+<p>Текст поста:</p>
+<p>{{post.text}}</p>
+
+{% if post.image %}
+    <img width="300px" height="200px" src="{{post.image.url}}">
+{% endif %}
+
+<br>
+<p>Создан: {{post.created_at}}</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger" >Удалить</button>
+    <a href="{% url 'blog:post_list' %}">
+        <button type="button" class="btn btn-primary">Отменить</button>
+    </a>
+</form>
+
+{% endblock content %}

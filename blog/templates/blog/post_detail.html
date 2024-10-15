@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<h2>Информация о посте № {{post.id}} </h2>
+<hr>
+<p>Автор - {{post.author}}</p>
+<p>Название - {{post.title}}</p>
+<p>Текст поста:</p>
+<p>{{post.text}}</p>
+
+{% if post.image %}
+    <img width="300px" height="200px" src="{{post.image.url}}">
+{% endif %}
+
+<br>
+<p>Создан: {{post.created_at}}</p>
+
+<div>
+    <a href="{% url 'blog:post_edit' pk=post.id %}" class="btn btn-primary">Редактировать</a>
+    <form action="{% url 'blog:post_delete' pk=post.id %}" method="get" style="display:inline">
+        <button type="submit" class="btn btn-danger">Удалить</button>
+    </form>
+</div>
+
+{% endblock content %}
